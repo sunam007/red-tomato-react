@@ -1,28 +1,34 @@
 import React, { useEffect, useState } from "react";
+import Cart from "../Cart/Cart";
 import Food from "../Food/Food";
 import "./Restaurant.css";
-import { generateString } from "../../utilities/random";
 
 const Restaurant = () => {
-  const [food, setFood] = useState([]);
+  const [users, setUsers] = useState([]);
   useEffect(() => {
-    const randomAlphabet = generateString(1);
-    // console.log(randomAlphabet);
-    const url = "http://www.themealdb.com/api/json/v1/1/search.php?f=a";
+    // console.log("api started");
+    const url = "https://jsonplaceholder.typicode.com/users";
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setFood(data));
+      .then((data) => {
+        // console.log(data);
+        if (Array.isArray(data) && data.length) {
+          setUsers(data);
+          // console.log("data loaded");
+        }
+      });
   }, []);
-  console.log(food);
+
+  // const addToCartHandler = (foods) => console.log(foods);
   return (
     <div className="restaurant-container">
-      <div className="food-container">
-        <h1>Dishes</h1>
-        {/* {food.map()} */}
-        <Food></Food>
+      <div>
+        {users.map((user) => (
+          <Food key={user.id} user={user}></Food>
+        ))}
       </div>
-      <div className="cart-container">
-        <h1>Food Items:</h1>
+      <div>
+        <Cart></Cart>
       </div>
     </div>
   );

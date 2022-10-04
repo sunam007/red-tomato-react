@@ -1,15 +1,18 @@
 import React from "react";
 import "./Food.css";
 
-const Food = () => {
+const Food = (props) => {
+  // console.log(props);
+  const { name, username, email, phone, website } = props.user;
   return (
-    <div>
-      <h2>Name:</h2>
-      <h4>Price:</h4>
-      <h4>Food Preparation time:</h4>
-      <button className="details-btn">Details</button>
+    <div className="food-container">
+      <h2>{name}</h2>
+      <h4>username: {username}</h4>
+      <h4>email: {email}</h4>
+      <h4>cell-no: {phone}</h4>
+      <h4>url: {website}</h4>
       <br />
-      <button className="order-btn">Add this item</button>
+      <button className="order-btn">Report this User</button>
     </div>
   );
 };
