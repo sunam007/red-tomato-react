@@ -5,6 +5,7 @@ import "./Restaurant.css";
 
 const Restaurant = () => {
   const [users, setUsers] = useState([]);
+  const [cart, setCart] = useState([]);
   useEffect(() => {
     // console.log("api started");
     const url = "https://jsonplaceholder.typicode.com/users";
@@ -19,16 +20,24 @@ const Restaurant = () => {
       });
   }, []);
 
-  // const addToCartHandler = (foods) => console.log(foods);
+  const addToCartHandler = (user) => {
+    // console.log(user.name);
+    const newCart = [...cart, user];
+    setCart(newCart);
+  };
   return (
     <div className="restaurant-container">
       <div>
         {users.map((user) => (
-          <Food key={user.id} user={user}></Food>
+          <Food
+            key={user.id}
+            user={user}
+            addToCartHandler={addToCartHandler}
+          ></Food>
         ))}
       </div>
-      <div>
-        <Cart></Cart>
+      <div className="cart">
+        <Cart cart={cart}></Cart>
       </div>
     </div>
   );

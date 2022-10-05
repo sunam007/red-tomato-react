@@ -12,7 +12,12 @@ const Food = (props) => {
       <h4>cell-no: {phone}</h4>
       <h4>url: {website}</h4>
       <br />
-      <button className="order-btn">Report this User</button>
+      <button
+        onClick={() => props.addToCartHandler(props.user)}
+        className="order-btn"
+      >
+        Report this User
+      </button>
     </div>
   );
 };

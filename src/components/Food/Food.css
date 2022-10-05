@@ -1,6 +1,6 @@
 .food-container {
-  border: 1px solid red;
+  border-bottom: 1px solid gray;
   margin: 5px;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
 }
