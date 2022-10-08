@@ -7,3 +7,20 @@
   margin: 5px;
   padding: 10px;
 }
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.search-container input {
+  width: 25%;
+  padding: 10px;
+  margin: 0px 5px;
+  border-radius: 50px;
+  background-color: rgba(233, 232, 232, 0.8);
+  color: black;
+}
+.search-container button {
+  margin-left: 5px;
+}
